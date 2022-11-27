@@ -11,11 +11,11 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="310dp"
-        android:text="Button" />
+        android:text="Temps personne 1" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="310dp"
-        android:text="Button" />
+        android:text="Temps personne 2" />
 </LinearLayout>
