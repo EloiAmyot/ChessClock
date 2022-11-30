@@ -33,7 +33,11 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, Settings.class);
             startActivity(intent);
         }
-        if(item.getItemId() == R.id.reset){
+        else if(item.getItemId() == R.id.presets){
+            Intent intent = new Intent(this, Presets.class);
+            startActivity(intent);
+        }
+        else if(item.getItemId() == R.id.reset){
             time1 = 120;
             Button button1 = findViewById(R.id.button1);
             button1.setText(String.valueOf(time1) + " s");
