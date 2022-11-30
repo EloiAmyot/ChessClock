@@ -5,17 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity" >
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button4"
         android:layout_width="match_parent"
-        android:layout_height="310dp"
-        android:text="Temps personne 1" />
+        android:layout_height="319dp"
+        android:backgroundTint="#F44336"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="Temps personne 1"
+        app:cornerRadius="0dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button5"
         android:layout_width="match_parent"
-        android:layout_height="310dp"
-        android:text="Temps personne 2" />
+        android:layout_height="319dp"
+        android:backgroundTint="#1536ED"
+        android:insetTop="0dp"
+        android:text="Temps personne 2"
+        app:cornerRadius="0dp" />
 </LinearLayout>
