@@ -3,28 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity">
 
     <Button
         android:id="@+id/button1"
         android:layout_width="match_parent"
-        android:layout_height="319dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
         android:backgroundTint="#F44336"
         android:insetTop="0dp"
         android:insetBottom="0dp"
+        android:rotation="180"
         android:text="200 s"
         android:textAllCaps="false"
+        android:textSize="48sp"
         app:cornerRadius="0dp" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
-        android:layout_height="319dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
         android:backgroundTint="#1536ED"
         android:insetTop="0dp"
+        android:insetBottom="0dp"
         android:text="200 s"
         android:textAllCaps="false"
+        android:textSize="48sp"
         app:cornerRadius="0dp" />
 </LinearLayout>

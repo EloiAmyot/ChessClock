@@ -38,12 +38,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         else if(item.getItemId() == R.id.reset){
-            time1 = 120;
+            time1 = 430;
             Button button1 = findViewById(R.id.button1);
-            button1.setText(String.valueOf(time1) + " s");
-            time2 = 120;
+            button1.setText((time1 - (time1 % 60))/60 + " m " + String.valueOf(time1 % 60) + " s");
+            time2 = 42069;
             Button button2 = findViewById(R.id.button2);
-            button2.setText(String.valueOf(time2) + " s");
+            button2.setText((time2 - (time2 % 60))/60 + " m " + String.valueOf(time2 % 60) + " s");
         }
         return super.onOptionsItemSelected(item);
     }
