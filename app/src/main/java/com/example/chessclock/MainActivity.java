@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         else if(item.getItemId() == R.id.presets){
-            Intent intent = new Intent(this, Presets.class);
+            Intent intent = new Intent(this, Favorites.class);
             startActivity(intent);
         }
         else if(item.getItemId() == R.id.reset){
