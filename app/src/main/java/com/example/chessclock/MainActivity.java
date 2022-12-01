@@ -12,6 +12,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+    Preset preset = new Preset();
     int time1 = 200;
     int time2 = 200;
     @Override
