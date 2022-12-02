@@ -42,11 +42,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
         public ViewHolder(@NonNull View itemView, AppCompatActivity favorites) {
             super(itemView);
-            itemView.setOnClickListener( view -> {
+            /*itemView.setOnClickListener( view -> {
                 Intent intent = new Intent();
-                favorites.setResult(Favorites.RESULT_OK, intent);
-                favorites.finish();
-            });
+                //favorites.setResult(Favorites.RESULT_OK, intent);
+                //favorites.finish();
+            });*/
         }
 
     }

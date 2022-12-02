@@ -4,11 +4,14 @@
 
     <item
         android:id="@+id/settings"
-        android:title="Settings" />
+        android:title="Nouvelle partie" />
+    <item
+        android:id="@+id/favorites"
+        android:title="Favoris" />
+    <item
+        android:id="@+id/previousGames"
+        android:title="Parties précédentes" />
     <item
         android:id="@+id/reset"
         android:title="Reset" />
-    <item
-        android:id="@+id/presets"
-        android:title="Presets" />
 </menu>
