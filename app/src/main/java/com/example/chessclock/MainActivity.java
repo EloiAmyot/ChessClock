@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 
 import java.util.Timer;
@@ -47,23 +48,49 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void ClickJ1()
+    boolean b1clicked = false;
+    boolean b2clicked = false;
+    boolean j1Win = false;
+    boolean j2Win = false;
+    public void ClickJ1(View view)
     {
-        Timer myTimer2 = new Timer();
-        TimerTask task  = new TimerTask() {
-            public void run() {
-                int timelive = preset.getTime2();
-                timelive--;
-                preset.setTime2(timelive);
-            }
-        };
-        myTimer2.scheduleAtFixedRate(task, 1000, 1000);
+        b2clicked = false;
+        if(b1clicked == false && j1Win == false && j2Win == false) {
+            Timer myTimer2 = new Timer();
+            Button button = findViewById(R.id.button2);
+            TimerTask task = new TimerTask() {
+                public void run() {
+                    preset.setTime2(preset.getTime2() - 1);
+                    button.setText(String.valueOf(((preset.getTime2()) - (preset.getTime2() % 60)) / 60) + " m " + String.valueOf(preset.getTime2() % 60) + " s");
+                    if (preset.getTime2() == 0) {
+                        j1Win = true;
+                    }
+                }
+            };
+            myTimer2.scheduleAtFixedRate(task, 1000, 1000);
+        }
+        b1clicked = true;
     }
 
-    public void ClickJ2()
+    public void ClickJ2(View view)
     {
-
+        b1clicked = false;
+        if(b2clicked == false && j1Win == false && j2Win == false)
+        {
+            Timer myTimer1 = new Timer();
+            Button button = findViewById(R.id.button1);
+            TimerTask task  = new TimerTask() {
+                public void run() {
+                    preset.setTime1(preset.getTime1() - 1);
+                    button.setText(String.valueOf(((preset.getTime1()) - (preset.getTime1() % 60)) / 60) + " m " + String.valueOf(preset.getTime1() % 60) + " s");
+                    if(preset.getTime2() == 0)
+                    {
+                        j1Win = true;
+                    }
+                }
+            };
+            myTimer1.scheduleAtFixedRate(task, 1000, 1000);
+        }
+        b2clicked = true;
     }
-
-
 }

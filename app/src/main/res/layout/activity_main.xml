@@ -30,6 +30,7 @@
         android:backgroundTint="#1536ED"
         android:insetTop="0dp"
         android:insetBottom="0dp"
+        android:onClick="ClickJ2"
         android:text="200 s"
         android:textAllCaps="false"
         android:textSize="48sp"
