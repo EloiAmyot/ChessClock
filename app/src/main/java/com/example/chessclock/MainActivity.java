@@ -13,8 +13,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     Preset preset = new Preset();
-    int time1 = 200;
-    int time2 = 200;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,13 +34,23 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         else if(item.getItemId() == R.id.reset){
-            time1 = 430;
+            int time1 = 430;
             Button button1 = findViewById(R.id.button1);
             button1.setText((time1 - (time1 % 60))/60 + " m " + String.valueOf(time1 % 60) + " s");
-            time2 = 42069;
+            int time2 = 42069;
             Button button2 = findViewById(R.id.button2);
             button2.setText((time2 - (time2 % 60))/60 + " m " + String.valueOf(time2 % 60) + " s");
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void ClickJ1()
+    {
+        
+    }
+
+    public void ClickJ2()
+    {
+
     }
 }

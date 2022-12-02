@@ -3,18 +3,24 @@ package com.example.chessclock;
 public class Preset {
     int time1;
     int time2;
-    int increment;
+    int increment1;
+    int increment2;
+    boolean favorite;
 
     public Preset(){
-        this.time1 = 200;
-        this.time2 = 200;
-        this.increment = 0;
+        this.time1 = 300;
+        this.time2 = 300;
+        this.increment1 = 2;
+        this.increment2 = 2;
+        this.favorite = false;
     }
 
-    public Preset(int time1, int time2, int increment){
+    public Preset(int time1, int time2, int increment1, int increment2, boolean favorite){
         this.time1 = time1;
         this.time2 = time2;
-        this.increment = increment;
+        this.increment1 = increment1;
+        this.increment2 = increment2;
+        this.favorite = favorite;
     }
 
     public int getTime1() {
@@ -33,11 +39,27 @@ public class Preset {
         this.time2 = time2;
     }
 
-    public int getIncrement() {
-        return increment;
+    public int getIncrement1() {
+        return increment1;
     }
 
-    public void setIncrement(int increment) {
-        this.increment = increment;
+    public void setIncrement1(int increment) {
+        this.increment1 = increment1;
+    }
+    public int getIncrement2() {return increment2;}
+
+    public void setIncrement2 (int increment2)
+    {
+        this.increment2 = increment2;
+    }
+
+    public boolean getFavorite()
+    {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite)
+    {
+        this.favorite = favorite;
     }
 }
