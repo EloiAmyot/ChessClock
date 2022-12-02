@@ -30,11 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.settings){
-            Intent intent = new Intent(this, Settings.class);
-            startActivity(intent);
-        }
-        else if(item.getItemId() == R.id.presets){
+        if(item.getItemId() == R.id.presets){
             Intent intent = new Intent(this, Favorites.class);
             startActivity(intent);
         }
