@@ -10,6 +10,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class MainActivity extends AppCompatActivity {
 
     Preset preset = new Preset();
@@ -46,11 +49,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void ClickJ1()
     {
-        
+        Timer myTimer2 = new Timer();
+        TimerTask task  = new TimerTask() {
+            public void run() {
+                int timelive = preset.getTime2();
+                timelive--;
+                preset.setTime2(timelive);
+            }
+        };
+        myTimer2.scheduleAtFixedRate(task, 1000, 1000);
     }
 
     public void ClickJ2()
     {
 
     }
+
+
 }
