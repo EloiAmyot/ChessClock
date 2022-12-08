@@ -48,20 +48,23 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    boolean b1clicked = false;
-    boolean b2clicked = false;
     boolean j1Win = false;
     boolean j2Win = false;
+    Timer myTimer1 = new Timer();
+    Timer myTimer2 = new Timer();
+    Button button1 = findViewById(R.id.button1);
+    Button button2 = findViewById(R.id.button2);
     public void ClickJ1(View view)
     {
-        b2clicked = false;
-        if(b1clicked == false && j1Win == false && j2Win == false) {
-            Timer myTimer2 = new Timer();
-            Button button = findViewById(R.id.button2);
+        myTimer1.cancel();
+
+        if(j1Win == false && j2Win == false) {
+
             TimerTask task = new TimerTask() {
+                @Override
                 public void run() {
                     preset.setTime2(preset.getTime2() - 1);
-                    button.setText(String.valueOf(((preset.getTime2()) - (preset.getTime2() % 60)) / 60) + " m " + String.valueOf(preset.getTime2() % 60) + " s");
+                    button2.setText(String.valueOf(((preset.getTime2()) - (preset.getTime2() % 60)) / 60) + " m " + String.valueOf(preset.getTime2() % 60) + " s");
                     if (preset.getTime2() == 0) {
                         j1Win = true;
                     }
@@ -69,20 +72,21 @@ public class MainActivity extends AppCompatActivity {
             };
             myTimer2.scheduleAtFixedRate(task, 1000, 1000);
         }
-        b1clicked = true;
+        button2.setEnabled(false);
+        button1.setEnabled(true);
     }
 
     public void ClickJ2(View view)
     {
-        b1clicked = false;
-        if(b2clicked == false && j1Win == false && j2Win == false)
+        myTimer2.cancel();
+
+        if(j1Win == false && j2Win == false)
         {
-            Timer myTimer1 = new Timer();
-            Button button = findViewById(R.id.button1);
             TimerTask task  = new TimerTask() {
+                @Override
                 public void run() {
                     preset.setTime1(preset.getTime1() - 1);
-                    button.setText(String.valueOf(((preset.getTime1()) - (preset.getTime1() % 60)) / 60) + " m " + String.valueOf(preset.getTime1() % 60) + " s");
+                    button1.setText(String.valueOf(((preset.getTime1()) - (preset.getTime1() % 60)) / 60) + " m " + String.valueOf(preset.getTime1() % 60) + " s");
                     if(preset.getTime2() == 0)
                     {
                         j1Win = true;
@@ -91,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
             };
             myTimer1.scheduleAtFixedRate(task, 1000, 1000);
         }
-        b2clicked = true;
+        button1.setEnabled(false);
+        button2.setEnabled(true);
     }
 }
