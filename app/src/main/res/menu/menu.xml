@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/settings"
+        android:id="@+id/newGame"
         android:title="Nouvelle partie" />
     <item
         android:id="@+id/favorites"

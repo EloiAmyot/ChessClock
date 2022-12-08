@@ -15,7 +15,6 @@
         android:backgroundTint="#F44336"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-        android:onClick="ClickJ1"
         android:rotation="180"
         android:text="200 s"
         android:textAllCaps="false"

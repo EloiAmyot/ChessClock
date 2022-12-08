@@ -17,11 +17,15 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity {
 
     Preset preset = new Preset();
+    Button button1;
+    Button button2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        button1 = findViewById(R.id.button1);
+        button2 = findViewById(R.id.button2);
     }
 
     @Override
@@ -35,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.favorites){
             Intent intent = new Intent(this, Favorites.class);
+            startActivity(intent);
+        }
+        else if (item.getItemId() == R.id.newGame){
+            Intent intent = new Intent(this, NouvellePartie.class);
             startActivity(intent);
         }
         else if(item.getItemId() == R.id.reset){
@@ -52,8 +60,7 @@ public class MainActivity extends AppCompatActivity {
     boolean j2Win = false;
     Timer myTimer1 = new Timer();
     Timer myTimer2 = new Timer();
-    Button button1 = findViewById(R.id.button1);
-    Button button2 = findViewById(R.id.button2);
+
     public void ClickJ1(View view)
     {
         myTimer1.cancel();
