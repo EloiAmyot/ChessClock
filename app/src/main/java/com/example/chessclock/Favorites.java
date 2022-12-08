@@ -16,6 +16,9 @@ public class Favorites extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
         ArrayList<Preset> presets = new ArrayList<>();
+        presets.add(new Preset());
+        presets.add(new Preset(500,500,6,6,true));
+
 
         CustomAdapter monAdapter = new CustomAdapter(presets,this);
         RecyclerView recycler = findViewById(R.id.recycler);

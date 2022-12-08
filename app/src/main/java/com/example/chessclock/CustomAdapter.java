@@ -30,7 +30,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+        holder.setViewHolder(String.valueOf(presets.get(position).getTime1()), String.valueOf(presets.get(position).getTime2()),String.valueOf(presets.get(position).getIncrement1()), String.valueOf(presets.get(position).getIncrement2()));
     }
 
     @Override
@@ -40,13 +40,27 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
+        TextView time1;
+        TextView time2;
+        TextView increment1;
+        TextView increment2;
         public ViewHolder(@NonNull View itemView, AppCompatActivity favorites) {
             super(itemView);
+            time1=itemView.findViewById(R.id.time1);
+            time2=itemView.findViewById(R.id.time2);
+            increment1=itemView.findViewById(R.id.increment1);
+            increment2=itemView.findViewById(R.id.increment2);
             /*itemView.setOnClickListener( view -> {
                 Intent intent = new Intent();
                 //favorites.setResult(Favorites.RESULT_OK, intent);
                 //favorites.finish();
             });*/
+        }
+        public void setViewHolder(String time1, String time2, String increment1, String increment2){
+            this.time1.setText(time1);
+            this.time2.setText(time1);
+            this.increment1.setText(increment1);
+            this.increment2.setText(increment2);
         }
 
     }
