@@ -56,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         else if(item.getItemId() == R.id.reset){
-            int time1 = 430;
+            int time1 = 300;
             Button button1 = findViewById(R.id.button1);
             button1.setText((time1 - (time1 % 60))/60 + " m " + String.valueOf(time1 % 60) + " s");
-            int time2 = 42069;
+            int time2 = 300;
             Button button2 = findViewById(R.id.button2);
             button2.setText((time2 - (time2 % 60))/60 + " m " + String.valueOf(time2 % 60) + " s");
         }
