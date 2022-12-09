@@ -1,10 +1,7 @@
 package com.example.chessclock;
 
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
 
-@Entity
 public class Preset {
     int time1;
     int time2;
@@ -12,12 +9,12 @@ public class Preset {
     int increment2;
     boolean favorite;
 
-    @PrimaryKey(autoGenerate = true) // Primary key = la variable qui rend votre item unique
+
     public int id;
 
     public Preset(){
-        this.time1 = 300;
-        this.time2 = 300;
+        this.time1 = 15;
+        this.time2 = 15;
         this.increment1 = 2;
         this.increment2 = 2;
         this.favorite = false;

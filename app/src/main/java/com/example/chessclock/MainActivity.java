@@ -2,6 +2,8 @@ package com.example.chessclock;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,14 +21,21 @@ public class MainActivity extends AppCompatActivity {
     Preset preset = new Preset();
     Button button1;
     Button button2;
+    MutableLiveData<Boolean> j1enable = new MutableLiveData<>();
+    MutableLiveData<Boolean> j2enable = new MutableLiveData<>();
+    MutableLiveData<String> j1text = new MutableLiveData<>();
+    MutableLiveData<String> j2text = new MutableLiveData<>();
 
-    Timer myTimer2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
+        j1enable.observe(this, button1::setEnabled);
+        j2enable.observe(this, button2::setEnabled);
+        j1text.observe(this, button1::setText);
+        j2text.observe(this, button2::setText);
     }
 
     @Override
@@ -60,11 +69,13 @@ public class MainActivity extends AppCompatActivity {
     boolean j1Win = false;
     boolean j2Win = false;
     Timer myTimer1 = new Timer();
+    Timer myTimer2 = new Timer();
+
 
     public void ClickJ1(View view)
     {
         myTimer1.cancel();
-
+        myTimer2 = new Timer();
         if(j1Win == false && j2Win == false) {
 
             TimerTask task = new TimerTask() {
@@ -74,19 +85,38 @@ public class MainActivity extends AppCompatActivity {
                     button2.setText(String.valueOf(((preset.getTime2()) - (preset.getTime2() % 60)) / 60) + " m " + String.valueOf(preset.getTime2() % 60) + " s");
                     if (preset.getTime2() == 0) {
                         j1Win = true;
+                        ClickJ2(button2);
                     }
                 }
             };
             myTimer2.scheduleAtFixedRate(task, 1000, 1000);
         }
-        button2.setEnabled(false);
-        button1.setEnabled(true);
+        else
+        {
+            j1enable.postValue(false);
+            j2enable.postValue(false);
+            myTimer2.cancel();
+            myTimer1.cancel();
+            if(j1Win == true)
+            {
+                j1text.postValue("YOU WIN!");
+                j2text.postValue("LOSER HHAHAHAHAA");
+            }
+            if(j2Win == true)
+            {
+                j2text.postValue("YOU WIN!");
+                j1text.postValue("LOSER HHAHAHAHAA");
+            }
+        }
+        j2enable.postValue(true);
+        j1enable.postValue(false);
     }
 
     public void ClickJ2(View view)
     {
-        myTimer2.cancel();
 
+        myTimer2.cancel();
+        myTimer1 = new Timer();
         if(j1Win == false && j2Win == false)
         {
             TimerTask task  = new TimerTask() {
@@ -94,15 +124,33 @@ public class MainActivity extends AppCompatActivity {
                 public void run() {
                     preset.setTime1(preset.getTime1() - 1);
                     button1.setText(String.valueOf(((preset.getTime1()) - (preset.getTime1() % 60)) / 60) + " m " + String.valueOf(preset.getTime1() % 60) + " s");
-                    if(preset.getTime2() == 0)
+                    if(preset.getTime1() == 0)
                     {
                         j1Win = true;
+                        ClickJ1(button1);
                     }
                 }
             };
             myTimer1.scheduleAtFixedRate(task, 1000, 1000);
         }
-        button1.setEnabled(false);
-        button2.setEnabled(true);
+        else
+        {
+            j1enable.postValue(false);
+            j2enable.postValue(false);
+            myTimer2.cancel();
+            myTimer1.cancel();
+            if(j1Win == true)
+            {
+                j1text.postValue("YOU WIN!");
+                j2text.postValue("LOSER HAHAHAHAA");
+            }
+            if(j2Win == true)
+            {
+                j2text.postValue("YOU WIN!");
+                j1text.postValue("LOSER HAHAHAHAA");
+            }
+        }
+        j1enable.postValue(true);
+        j2enable.postValue(false);
     }
 }
