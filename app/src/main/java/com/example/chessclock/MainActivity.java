@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     Button button1;
     Button button2;
 
+    Timer myTimer2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
