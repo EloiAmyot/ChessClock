@@ -9,6 +9,6 @@ public class NouvellePartie extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nouvelle_partie);
+        setContentView(R.layout.view_holder);
     }
 }

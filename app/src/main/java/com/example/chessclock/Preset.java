@@ -23,6 +23,14 @@ public class Preset {
         this.favorite = false;
     }
 
+    /*public Preset(Preset preset){
+        this.time1 = preset.getTime1();
+        this.time2 = preset.getTime2();
+        this.increment1 = preset.getIncrement1();
+        this.increment2 = preset.getIncrement2();
+        this.favorite = preset.getFavorite();
+    }*/
+
     public Preset(int time1, int time2, int increment1, int increment2, boolean favorite){
         this.time1 = time1;
         this.time2 = time2;
