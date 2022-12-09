@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
     boolean j1Win = false;
     boolean j2Win = false;
     Timer myTimer1 = new Timer();
-    Timer myTimer2 = new Timer();
 
     public void ClickJ1(View view)
     {
