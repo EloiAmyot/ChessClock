@@ -20,11 +20,12 @@
             android:textAlignment="viewEnd" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/addPreset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.01"
             android:insetLeft="40dp"
+            android:onClick="clickAddPreset"
             android:text="+"
             app:cornerRadius="50dp" />
 

@@ -1,5 +1,7 @@
 package com.example.chessclock;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
@@ -17,8 +19,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
-
-    Preset preset = new Preset();
+    ActivityResultLauncher<Intent> newGame;
+    Preset preset;
     Button button1;
     Button button2;
     MutableLiveData<Boolean> j1enable = new MutableLiveData<>();
@@ -36,6 +38,16 @@ public class MainActivity extends AppCompatActivity {
         j2enable.observe(this, button2::setEnabled);
         j1text.observe(this, button1::setText);
         j2text.observe(this, button2::setText);
+        preset = new Preset();
+
+        newGame = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    Intent intent = result.getData();
+                    if (intent == null) return;
+                    preset = (Preset)intent.getSerializableExtra("Preset");
+                }
+        );
     }
 
     @Override
@@ -53,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (item.getItemId() == R.id.newGame){
             Intent intent = new Intent(this, NouvellePartie.class);
-            startActivity(intent);
+            newGame.launch(intent);
         }
         else if(item.getItemId() == R.id.reset){
             int time1 = 300;

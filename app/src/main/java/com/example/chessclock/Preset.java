@@ -4,8 +4,10 @@ package com.example.chessclock;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity
-public class Preset {
+public class Preset  implements Serializable {
     int time1;
     int time2;
     int increment1;
@@ -13,20 +15,20 @@ public class Preset {
     boolean favorite;
 
     public Preset(){
-        this.time1 = 15;
-        this.time2 = 15;
+        this.time1 = 300;
+        this.time2 = 300;
         this.increment1 = 2;
         this.increment2 = 2;
         this.favorite = false;
     }
 
-    /*public Preset(Preset preset){
+    public Preset(Preset preset){
         this.time1 = preset.getTime1();
         this.time2 = preset.getTime2();
         this.increment1 = preset.getIncrement1();
         this.increment2 = preset.getIncrement2();
         this.favorite = preset.getFavorite();
-    }*/
+    }
 
     public Preset(int time1, int time2, int increment1, int increment2, boolean favorite){
         this.time1 = time1;
@@ -39,6 +41,9 @@ public class Preset {
     @PrimaryKey(autoGenerate = true) // Primary key = la variable qui rend votre item unique
     public int id;
 
+    public boolean equals(Preset preset){
+        return time1 == preset.time1  && time2 == preset.time2  && increment1 == preset.increment1  && increment2 == preset.increment2  && favorite ==preset.favorite;
+    }
 
     public int getTime1() {
         return time1;
