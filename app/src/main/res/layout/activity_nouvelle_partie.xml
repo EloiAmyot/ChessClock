@@ -35,8 +35,8 @@
 
                 <EditText
                     android:id="@+id/temps1"
-                    android:layout_width="73dp"
-                    android:layout_height="27dp"
+                    android:layout_width="79dp"
+                    android:layout_height="59dp"
                     android:ems="10"
                     android:inputType="number" />
 
@@ -55,8 +55,8 @@
 
                 <EditText
                     android:id="@+id/newIncrement1"
-                    android:layout_width="73dp"
-                    android:layout_height="27dp"
+                    android:layout_width="79dp"
+                    android:layout_height="59dp"
                     android:ems="10"
                     android:inputType="number" />
 
@@ -88,8 +88,8 @@
 
                 <EditText
                     android:id="@+id/temps2"
-                    android:layout_width="73dp"
-                    android:layout_height="27dp"
+                    android:layout_width="79dp"
+                    android:layout_height="59dp"
                     android:ems="10"
                     android:inputType="number" />
 
@@ -108,8 +108,8 @@
 
                 <EditText
                     android:id="@+id/newIncrement2"
-                    android:layout_width="73dp"
-                    android:layout_height="27dp"
+                    android:layout_width="79dp"
+                    android:layout_height="59dp"
                     android:ems="10"
                     android:inputType="number" />
 
