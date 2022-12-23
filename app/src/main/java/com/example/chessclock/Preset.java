@@ -3,6 +3,7 @@ package com.example.chessclock;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.ColumnInfo;
 
 import java.io.Serializable;
 

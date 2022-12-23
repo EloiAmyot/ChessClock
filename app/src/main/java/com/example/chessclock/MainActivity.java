@@ -93,14 +93,17 @@ public class MainActivity extends AppCompatActivity {
     {
         myTimer1.cancel();
         myTimer2 = new Timer();
-        if(j1Win == false && j2Win == false) {
-
+        if(j1Win == false && j2Win == false)
+        {
+            preset.setTime1(preset.getTime1() + preset.getIncrement1());
+            button1.setText(String.valueOf(((preset.getTime1()) - (preset.getTime1() % 60)) / 60) + " m " + String.valueOf(preset.getTime1() % 60) + " s");
             TimerTask task = new TimerTask() {
                 @Override
                 public void run() {
                     preset.setTime2(preset.getTime2() - 1);
                     button2.setText(String.valueOf(((preset.getTime2()) - (preset.getTime2() % 60)) / 60) + " m " + String.valueOf(preset.getTime2() % 60) + " s");
-                    if (preset.getTime2() == 0) {
+                    if (preset.getTime2() == 0)
+                    {
                         j1Win = true;
                         ClickJ2(button2);
                     }
@@ -136,6 +139,8 @@ public class MainActivity extends AppCompatActivity {
         myTimer1 = new Timer();
         if(j1Win == false && j2Win == false)
         {
+            preset.setTime2(preset.getTime2() + preset.getIncrement2());
+            button2.setText(String.valueOf(((preset.getTime2()) - (preset.getTime2() % 60)) / 60) + " m " + String.valueOf(preset.getTime2() % 60) + " s");
             TimerTask task  = new TimerTask() {
                 @Override
                 public void run() {
