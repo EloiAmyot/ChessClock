@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
         j1text.observe(this, button1::setText);
         j2text.observe(this, button2::setText);
         preset = new Preset();
-        button1.setText(String.valueOf(preset.getTime1()));
-        button2.setText(String.valueOf(preset.getTime2()));
+        button1.setText(String.valueOf(((preset.getTime1()) - (preset.getTime1() % 60)) / 60) + " m " + String.valueOf(preset.getTime1() % 60) + " s");
+        button2.setText(String.valueOf(((preset.getTime2()) - (preset.getTime2() % 60)) / 60) + " m " + String.valueOf(preset.getTime2() % 60) + " s");
 
         newGame = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
