@@ -26,7 +26,7 @@
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="310dp"
+        android:layout_height="320dp"
         android:layout_weight="1"
         android:background="#0C0C0C"
         android:backgroundTint="#020202"
