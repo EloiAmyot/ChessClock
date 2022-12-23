@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     Preset preset;
     Button button1;
     Button button2;
+    boolean first = true;
     MutableLiveData<Boolean> j1enable = new MutableLiveData<>();
     MutableLiveData<Boolean> j2enable = new MutableLiveData<>();
     MutableLiveData<String> j1text = new MutableLiveData<>();
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     myTimer2.cancel();
                     button1.setEnabled(true);
                     button2.setEnabled(true);
+                    first = true;
                 }
         );
         favorites = registerForActivityResult(
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                     myTimer2.cancel();
                     button1.setEnabled(true);
                     button2.setEnabled(true);
+                    first = true;
                 }
         );
     }
@@ -94,20 +97,24 @@ public class MainActivity extends AppCompatActivity {
             newGame.launch(intent);
         }
         else if(item.getItemId() == R.id.reset){
-            int time1 = 300;
+            preset.setTime1(300);
             Button button1 = findViewById(R.id.button1);
-            button1.setText((time1 - (time1 % 60))/60 + " m " + String.valueOf(time1 % 60) + " s");
-            int time2 = 300;
+            button1.setText(String.valueOf(((preset.getTime1()) - (preset.getTime1() % 60)) / 60) + " m " + String.valueOf(preset.getTime1() % 60) + " s");
+            preset.setTime2(300);
             Button button2 = findViewById(R.id.button2);
-            button2.setText((time2 - (time2 % 60))/60 + " m " + String.valueOf(time2 % 60) + " s");
+            button2.setText(String.valueOf(((preset.getTime2()) - (preset.getTime2() % 60)) / 60) + " m " + String.valueOf(preset.getTime2() % 60) + " s");
+            myTimer1.cancel();
+            myTimer2.cancel();
+            button1.setEnabled(true);
+            button2.setEnabled(true);
+            first = true;
         }
         return super.onOptionsItemSelected(item);
     }
 
+
     boolean j1Win = false;
     boolean j2Win = false;
-
-
 
     public void ClickJ1(View view)
     {
@@ -115,7 +122,15 @@ public class MainActivity extends AppCompatActivity {
         myTimer2 = new Timer();
         if(j1Win == false && j2Win == false)
         {
-            preset.setTime1(preset.getTime1() + preset.getIncrement1());
+            if (first == true)
+            {
+                preset.setTime1(preset.getTime1());
+                first = false;
+            }
+            else
+            {
+                preset.setTime1(preset.getTime1() + preset.getIncrement1());
+            }
             button1.setText(String.valueOf(((preset.getTime1()) - (preset.getTime1() % 60)) / 60) + " m " + String.valueOf(preset.getTime1() % 60) + " s");
             TimerTask task = new TimerTask() {
                 @Override
@@ -159,7 +174,15 @@ public class MainActivity extends AppCompatActivity {
         myTimer1 = new Timer();
         if(j1Win == false && j2Win == false)
         {
-            preset.setTime2(preset.getTime2() + preset.getIncrement2());
+            if (first == true)
+            {
+                preset.setTime2(preset.getTime2());
+                first = false;
+            }
+            else
+            {
+                preset.setTime2(preset.getTime2() + preset.getIncrement2());
+            }
             button2.setText(String.valueOf(((preset.getTime2()) - (preset.getTime2() % 60)) / 60) + " m " + String.valueOf(preset.getTime2() % 60) + " s");
             TimerTask task  = new TimerTask() {
                 @Override
