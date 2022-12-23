@@ -9,9 +9,6 @@
         android:id="@+id/favorites"
         android:title="Favoris" />
     <item
-        android:id="@+id/previousGames"
-        android:title="Parties précédentes" />
-    <item
         android:id="@+id/reset"
         android:title="Reset" />
 </menu>
