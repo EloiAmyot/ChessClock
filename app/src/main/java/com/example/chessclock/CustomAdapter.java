@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 public class CustomAdapter extends ListAdapter<Preset, CustomAdapter.ViewHolder> {
     Favorites favorites;
+
     public CustomAdapter(Favorites favorites){
         super(DIFF_CALLBACK);
         this.favorites = favorites;
@@ -64,6 +65,12 @@ public class CustomAdapter extends ListAdapter<Preset, CustomAdapter.ViewHolder>
             itemView.findViewById(R.id.favori).setOnClickListener(view -> {
                 favorites.removePreset(preset);
             });
+            itemView.setOnClickListener( view -> {
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("Preset", preset);
+                favorites.setResult(favorites.RESULT_OK, returnIntent);
+                favorites.finish();
+            });
 
         }
         public void setViewHolder(String time1, String time2, String increment1, String increment2, Preset preset){
@@ -80,8 +87,8 @@ public class CustomAdapter extends ListAdapter<Preset, CustomAdapter.ViewHolder>
         public void onClickGlobalLayout(){
             Intent returnIntent = new Intent();
             returnIntent.putExtra("Preset", preset);
-            setResult(RESULT_OK, returnIntent);
-            finish();
+            favorites.setResult(favorites.RESULT_OK, returnIntent);
+            favorites.finish();
         }
 
     }
