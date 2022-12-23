@@ -33,11 +33,13 @@
                     android:layout_height="wrap_content"
                     android:text="Temps" />
 
-                <TextView
-                    android:id="@+id/time1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="200s" />
+                <EditText
+                    android:id="@+id/temps1"
+                    android:layout_width="73dp"
+                    android:layout_height="27dp"
+                    android:ems="10"
+                    android:inputType="number" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -51,11 +53,13 @@
                     android:layout_height="wrap_content"
                     android:text="Increment" />
 
-                <TextView
-                    android:id="@+id/increment1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="200s" />
+                <EditText
+                    android:id="@+id/newIncrement1"
+                    android:layout_width="73dp"
+                    android:layout_height="27dp"
+                    android:ems="10"
+                    android:inputType="number" />
+
             </LinearLayout>
 
         </LinearLayout>
@@ -82,11 +86,12 @@
                     android:layout_height="wrap_content"
                     android:text="Temps" />
 
-                <TextView
-                    android:id="@+id/time2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="200 s" />
+                <EditText
+                    android:id="@+id/temps2"
+                    android:layout_width="73dp"
+                    android:layout_height="27dp"
+                    android:ems="10"
+                    android:inputType="number" />
 
             </LinearLayout>
 
@@ -101,11 +106,13 @@
                     android:layout_height="wrap_content"
                     android:text="Increment" />
 
-                <TextView
-                    android:id="@+id/increment2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="200s" />
+                <EditText
+                    android:id="@+id/newIncrement2"
+                    android:layout_width="73dp"
+                    android:layout_height="27dp"
+                    android:ems="10"
+                    android:inputType="number" />
+
             </LinearLayout>
 
         </LinearLayout>
@@ -118,5 +125,12 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="Favori" />
+
+    <Button
+        android:id="@+id/boutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Button" />
 
 </LinearLayout>

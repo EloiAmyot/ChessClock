@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         j1text.observe(this, button1::setText);
         j2text.observe(this, button2::setText);
         preset = new Preset();
+        button1.setText(String.valueOf(preset.getTime1()));
+        button2.setText(String.valueOf(preset.getTime2()));
 
         newGame = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -46,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = result.getData();
                     if (intent == null) return;
                     preset = (Preset)intent.getSerializableExtra("Preset");
+                    button1.setText(String.valueOf(preset.getTime1()));
+                    button2.setText(String.valueOf(preset.getTime2()));
                 }
         );
     }
@@ -65,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (item.getItemId() == R.id.newGame){
             Intent intent = new Intent(this, NouvellePartie.class);
+            intent.putExtra("origine", "main");
             newGame.launch(intent);
         }
         else if(item.getItemId() == R.id.reset){
