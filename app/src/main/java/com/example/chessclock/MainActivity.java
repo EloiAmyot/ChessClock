@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     Preset preset;
     Button button1;
     Button button2;
+    boolean j1Win = false;
+    boolean j2Win = false;
     boolean first = true;
     MutableLiveData<Boolean> j1enable = new MutableLiveData<>();
     MutableLiveData<Boolean> j2enable = new MutableLiveData<>();
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
+
         j1enable.observe(this, button1::setEnabled);
         j2enable.observe(this, button2::setEnabled);
         j1text.observe(this, button1::setText);
@@ -44,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         preset = new Preset();
         button1.setText(String.valueOf(((preset.getTime1()) - (preset.getTime1() % 60)) / 60) + " m " + String.valueOf(preset.getTime1() % 60) + " s");
         button2.setText(String.valueOf(((preset.getTime2()) - (preset.getTime2() % 60)) / 60) + " m " + String.valueOf(preset.getTime2() % 60) + " s");
+        button1.setBackgroundColor((Color.parseColor("#4CAF50")));
+        button2.setBackgroundColor((Color.parseColor("#4CAF50")));
 
         newGame = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -58,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
                     button1.setEnabled(true);
                     button2.setEnabled(true);
                     first = true;
+                    button1.setBackgroundColor((Color.parseColor("#4CAF50")));
+                    button2.setBackgroundColor((Color.parseColor("#4CAF50")));
+                    j1Win = false;
+                    j2Win = false;
                 }
         );
         favorites = registerForActivityResult(
@@ -73,8 +83,13 @@ public class MainActivity extends AppCompatActivity {
                     button1.setEnabled(true);
                     button2.setEnabled(true);
                     first = true;
+                    button1.setBackgroundColor((Color.parseColor("#4CAF50")));
+                    button2.setBackgroundColor((Color.parseColor("#4CAF50")));
+                    j1Win = false;
+                    j2Win = false;
                 }
         );
+
     }
 
     @Override
@@ -108,16 +123,21 @@ public class MainActivity extends AppCompatActivity {
             button1.setEnabled(true);
             button2.setEnabled(true);
             first = true;
+            button1.setBackgroundColor((Color.parseColor("#4CAF50")));
+            button2.setBackgroundColor((Color.parseColor("#4CAF50")));
+            j1Win = false;
+            j2Win = false;
         }
         return super.onOptionsItemSelected(item);
     }
 
 
-    boolean j1Win = false;
-    boolean j2Win = false;
+
 
     public void ClickJ1(View view)
     {
+        button1.setBackgroundColor((Color.parseColor("#646864")));
+        button2.setBackgroundColor((Color.parseColor("#4CAF50")));
         myTimer1.cancel();
         myTimer2 = new Timer();
         if(j1Win == false && j2Win == false)
@@ -154,11 +174,15 @@ public class MainActivity extends AppCompatActivity {
             myTimer1.cancel();
             if(j1Win == true)
             {
+                button2.setBackgroundColor((Color.parseColor("#F44336")));
+                button1.setBackgroundColor((Color.parseColor("#4CAF50")));
                 j1text.postValue("YOU WIN!");
                 j2text.postValue("LOSER HHAHAHAHAA");
             }
             if(j2Win == true)
             {
+                button1.setBackgroundColor((Color.parseColor("#F44336")));
+                button2.setBackgroundColor((Color.parseColor("#4CAF50")));
                 j2text.postValue("YOU WIN!");
                 j1text.postValue("LOSER HHAHAHAHAA");
             }
@@ -169,7 +193,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void ClickJ2(View view)
     {
-
+        button2.setBackgroundColor((Color.parseColor("#646864")));
+        button1.setBackgroundColor((Color.parseColor("#4CAF50")));
         myTimer2.cancel();
         myTimer1 = new Timer();
         if(j1Win == false && j2Win == false)
@@ -191,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
                     button1.setText(String.valueOf(((preset.getTime1()) - (preset.getTime1() % 60)) / 60) + " m " + String.valueOf(preset.getTime1() % 60) + " s");
                     if(preset.getTime1() == 0)
                     {
-                        j1Win = true;
+                        j2Win = true;
                         ClickJ1(button1);
                     }
                 }
@@ -206,13 +231,17 @@ public class MainActivity extends AppCompatActivity {
             myTimer1.cancel();
             if(j1Win == true)
             {
+                button2.setBackgroundColor((Color.parseColor("#F44336")));
+                button1.setBackgroundColor((Color.parseColor("#4CAF50")));
                 j1text.postValue("YOU WIN!");
-                j2text.postValue("LOSER HAHAHAHAA");
+                j2text.postValue("LOSER HHAHAHAHAA");
             }
             if(j2Win == true)
             {
+                button1.setBackgroundColor((Color.parseColor("#F44336")));
+                button2.setBackgroundColor((Color.parseColor("#4CAF50")));
                 j2text.postValue("YOU WIN!");
-                j1text.postValue("LOSER HAHAHAHAA");
+                j1text.postValue("LOSER HHAHAHAHAA");
             }
         }
         j1enable.postValue(true);
