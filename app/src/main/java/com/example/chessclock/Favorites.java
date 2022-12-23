@@ -35,6 +35,7 @@ public class Favorites extends AppCompatActivity {
 
     public void clickAddPreset(View view){
         Intent intent = new Intent(this, NouvellePartie.class);
+        intent.putExtra("origine", "nouveau_preset");
         startActivity(intent);
     }
 
