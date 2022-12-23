@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         else if (item.getItemId() == R.id.newGame){
+
             Intent intent = new Intent(this, NouvellePartie.class);
             intent.putExtra("origine", "main");
             newGame.launch(intent);

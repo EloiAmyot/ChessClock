@@ -18,22 +18,23 @@ public class NouvellePartie extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nouvelle_partie);
-        preset = new Preset(500, 500, 3, 3, false);
+        preset = new Preset();
         model = new ViewModelProvider(this).get(MyViewModel.class);
         Intent intent  = new Intent(getIntent());
+        Button boutton;
+        boutton =findViewById(R.id.boutton);
         if(intent.getStringExtra("origine").equals("nouveau_preset")){
             Button radiobutton = findViewById(R.id.radioButton);
             radiobutton.setEnabled(false);
 
-            Button boutton;
-            boutton =findViewById(R.id.boutton);
+
             boutton.setText("Confirmer");
             boutton.setOnClickListener(view -> {
                 EditText time1 = findViewById(R.id.temps1);
                 EditText increment1 = findViewById(R.id.newIncrement1);
                 EditText time2 = findViewById(R.id.temps2);
                 EditText increment2 = findViewById(R.id.newIncrement2);
-                if (!time1.getText().equals("") && !increment1.getText().equals("") && !time2.getText().equals("") && !increment2.getText().equals("")) {
+                if (!time1.getText().toString().equals("") && !increment1.getText().toString().equals("") && !time2.getText().toString().equals("") && !increment2.getText().toString().equals("")) {
                     preset.setFavorite(true);
                     preset.setTime1(Integer.parseInt(time1.getText().toString()));
                     preset.setIncrement1(Integer.parseInt(increment1.getText().toString()));
@@ -50,7 +51,24 @@ public class NouvellePartie extends AppCompatActivity {
             });
         }
         else{
+            boutton.setOnClickListener(view -> {
+                EditText time1 = findViewById(R.id.temps1);
+                EditText increment1 = findViewById(R.id.newIncrement1);
+                EditText time2 = findViewById(R.id.temps2);
+                EditText increment2 = findViewById(R.id.newIncrement2);
+                if (!time1.getText().toString().equals("") && !increment1.getText().toString().equals("") && !time2.getText().toString().equals("") && !increment2.getText().toString().equals("")) {
+                    preset.setFavorite(true);
+                    preset.setTime1(Integer.parseInt(time1.getText().toString()));
+                    preset.setIncrement1(Integer.parseInt(increment1.getText().toString()));
+                    preset.setTime2(Integer.parseInt(time2.getText().toString()));
+                    preset.setIncrement2(Integer.parseInt(increment2.getText().toString()));
+                }
 
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("Preset", preset);
+                setResult(RESULT_OK, returnIntent);
+                finish();
+            });
         }
 
     }
