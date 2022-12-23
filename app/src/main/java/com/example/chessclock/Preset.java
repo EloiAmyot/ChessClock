@@ -66,7 +66,7 @@ public class Preset  implements Serializable {
         return increment1;
     }
 
-    public void setIncrement1(int increment) {
+    public void setIncrement1(int increment1) {
         this.increment1 = increment1;
     }
     public int getIncrement2() {return increment2;}

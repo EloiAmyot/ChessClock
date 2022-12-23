@@ -28,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
     MutableLiveData<Boolean> j2enable = new MutableLiveData<>();
     MutableLiveData<String> j1text = new MutableLiveData<>();
     MutableLiveData<String> j2text = new MutableLiveData<>();
-
+    Timer myTimer1 = new Timer();
+    Timer myTimer2 = new Timer();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,8 +50,12 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = result.getData();
                     if (intent == null) return;
                     preset = (Preset)intent.getSerializableExtra("Preset");
-                    button1.setText(String.valueOf(preset.getTime1()));
-                    button2.setText(String.valueOf(preset.getTime2()));
+                    button1.setText(String.valueOf(((preset.getTime1()) - (preset.getTime1() % 60)) / 60) + " m " + String.valueOf(preset.getTime1() % 60) + " s");
+                    button2.setText(String.valueOf(((preset.getTime2()) - (preset.getTime2() % 60)) / 60) + " m " + String.valueOf(preset.getTime2() % 60) + " s");
+                    myTimer1.cancel();
+                    myTimer2.cancel();
+                    button1.setEnabled(true);
+                    button2.setEnabled(true);
                 }
         );
         favorites = registerForActivityResult(
@@ -59,8 +64,12 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = result.getData();
                     if (intent == null) return;
                     preset = (Preset)intent.getSerializableExtra("Preset");
-                    button1.setText(String.valueOf(preset.getTime1()));
-                    button2.setText(String.valueOf(preset.getTime2()));
+                    button1.setText(String.valueOf(((preset.getTime1()) - (preset.getTime1() % 60)) / 60) + " m " + String.valueOf(preset.getTime1() % 60) + " s");
+                    button2.setText(String.valueOf(((preset.getTime2()) - (preset.getTime2() % 60)) / 60) + " m " + String.valueOf(preset.getTime2() % 60) + " s");
+                    myTimer1.cancel();
+                    myTimer2.cancel();
+                    button1.setEnabled(true);
+                    button2.setEnabled(true);
                 }
         );
     }
@@ -97,8 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
     boolean j1Win = false;
     boolean j2Win = false;
-    Timer myTimer1 = new Timer();
-    Timer myTimer2 = new Timer();
+
 
 
     public void ClickJ1(View view)
