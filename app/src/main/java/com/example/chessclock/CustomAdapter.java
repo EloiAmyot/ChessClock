@@ -64,9 +64,7 @@ public class CustomAdapter extends ListAdapter<Preset, CustomAdapter.ViewHolder>
             itemView.findViewById(R.id.favori).setOnClickListener(view -> {
                 favorites.removePreset(preset);
             });
-           /* itemView.setOnClickListener(view -> {
 
-            });*/
         }
         public void setViewHolder(String time1, String time2, String increment1, String increment2, Preset preset){
             this.time1.setText(time1);
@@ -77,6 +75,13 @@ public class CustomAdapter extends ListAdapter<Preset, CustomAdapter.ViewHolder>
             CheckBox favori = itemView.findViewById(R.id.favori);
             if (preset.getFavorite()){favori.setChecked(true);}
 
+        }
+
+        public void onClickGlobalLayout(){
+            Intent returnIntent = new Intent();
+            returnIntent.putExtra("Preset", preset);
+            setResult(RESULT_OK, returnIntent);
+            finish();
         }
 
     }

@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class Favorites extends AppCompatActivity {
 
     MyViewModel viewModel;
-    Button addPreset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +22,6 @@ public class Favorites extends AppCompatActivity {
         setContentView(R.layout.activity_favorites);
 
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
-        //viewModel.addData(new Preset(300,300,2,4,true));
-
 
         CustomAdapter monAdapter = new CustomAdapter(this);
         viewModel.getData().observe(this, monAdapter::submitList);
@@ -41,5 +38,9 @@ public class Favorites extends AppCompatActivity {
 
     public void removePreset(Preset preset){
         viewModel.removeData(preset);
+    }
+
+    public void onClickGlobalLayout(View view){
+
     }
 }

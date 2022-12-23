@@ -20,6 +20,7 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     ActivityResultLauncher<Intent> newGame;
+    ActivityResultLauncher<Intent> favorites;
     Preset preset;
     Button button1;
     Button button2;
@@ -52,6 +53,16 @@ public class MainActivity extends AppCompatActivity {
                     button2.setText(String.valueOf(preset.getTime2()));
                 }
         );
+        favorites = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    Intent intent = result.getData();
+                    if (intent == null) return;
+                    preset = (Preset)intent.getSerializableExtra("Preset");
+                    button1.setText(String.valueOf(preset.getTime1()));
+                    button2.setText(String.valueOf(preset.getTime2()));
+                }
+        );
     }
 
     @Override
@@ -65,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.favorites){
             Intent intent = new Intent(this, Favorites.class);
-            startActivity(intent);
+            newGame.launch(intent);
         }
         else if (item.getItemId() == R.id.newGame){
 
